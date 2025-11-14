@@ -5,7 +5,7 @@ public class Usuario {
     private String nombre;
     private String aPaterno;
     private String aMaterno;
-    private Cuenta cuenta;
+    public Cuenta cuenta;
 
     //constructores
     private Usuario(){}
@@ -40,6 +40,6 @@ public class Usuario {
     }
 
     public String getCueta(){
-        return 
+        return this.numCuenta;
     }
 }

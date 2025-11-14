@@ -25,10 +25,10 @@ public class Banco {
 
     public Usuario buscarCuenta(String numCuenta){
         for(Usuario aux: usuarios){
-            if(aux.cuenta.getNumCuenta().equals(numCuenta)){
+            if(aux.numCuenta.equals(numCuenta)){
                 return aux;
             }
         }
-        return null<
+        return null;
     }
 }
