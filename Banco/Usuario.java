@@ -2,13 +2,13 @@ package Banco;
 
 public class Usuario {
     //atributos
-    private String nombre;
-    private String aPaterno;
-    private String aMaterno;
+    public String nombre;
+    public String aPaterno;
+    public String aMaterno;
     public Cuenta cuenta;
 
     //constructores
-    private Usuario(){}
+    public Usuario(){}
 
     public Usuario(String nombre, String aPaterno, String aMaterno){
         System.out.println("Creando usuario...");

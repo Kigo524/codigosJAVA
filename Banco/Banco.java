@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Banco {
     //atributos
-    private String nombreBanco;
-    private ArrayList<Usuario> usuarios;
+    public String nombreBanco;
+    public ArrayList<Usuario> usuarios;
 
     //metodos
     public Banco (){
