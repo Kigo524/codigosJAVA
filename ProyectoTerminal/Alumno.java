@@ -14,5 +14,5 @@ public class Alumno {
         return "| Alumno: " +nombreAlumno+ " | Matricula: " +matricula;
     }
 
-    
+    public void agregarProyecto
 }
