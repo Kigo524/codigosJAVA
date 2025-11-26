@@ -71,5 +71,10 @@ public class Usuario{
             System.out.println("El boleto No: " +num+ " ha sido cancelado exitosamente...");
             return true;
         }
+
+        //si falla el if de encontrarlo...
+        //si llega null aun...
+        System.out.println("ERROR, no se encuentra ese boleto en la litsa...");
+        return false;
     }
 }
