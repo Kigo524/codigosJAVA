@@ -23,9 +23,42 @@ public class Alumno {
         this.proyectos.add(proyecto);
     }
 
-    public void imprimirProyectos(ProyectoTerminal p){
+    public void imprimirProyectos(){
+        System.out.println("-------- Proyectos de PT1: ---------");
         for(ProyectoTerminal p: proyectos){
-            System.out.println(toString());
+            //para imprimir los pt1
+            if(p.tipoPT.equalsIgnoreCase("pt1")){
+                System.out.println(" " +p.toString());
+                imprimirAsesores(p);
+            }
+        }
+
+        System.out.println("\n -------- Proyectos de PT2: ---------");
+        for(ProyectoTerminal p: proyectos){
+            //para imprimir los pt2
+            if(p.tipoPT.equalsIgnoreCase("pt2")){
+                System.out.println(" " +p.toString());
+                imprimirAsesores(p);
+            }
+        }
+
+        System.out.println("\n -------- Proyectos de PT3: ---------");
+        for(ProyectoTerminal p: proyectos){
+            //para imprimir los pt2
+            if(p.tipoPT.equalsIgnoreCase("pt3")){
+                System.out.println(" " +p.toString());
+                imprimirAsesores(p);
+            }
+        }
+    }
+
+    public void imprimirAsesores(ProyectoTerminal p){
+        if(p.profes.isEmpty()){
+            System.out.println("No hay profesores asigandos a este PT...");
+        }
+        System.out.println("Asesores: ");
+        for(Asesor a: p.profes){
+            System.out.println(" " +a.toString());
         }
     }
 }

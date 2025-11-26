@@ -5,8 +5,8 @@ import java.util.List;
 public class Universidad {
     public static void main(String [] args){
         //se crean dos proyectos 
-        ProyectoTerminal carro = new ProyectoTerminal("Carro volador");
-        ProyectoTerminal tiempo = new ProyectoTerminal("Maquina del tiempo");
+        ProyectoTerminal carro = new ProyectoTerminal("Carro volador", "pt1");
+        ProyectoTerminal tiempo = new ProyectoTerminal("Maquina del tiempo", "pt3");
 
         System.out.println("Se han creado los PT...");
 
@@ -32,7 +32,8 @@ public class Universidad {
 
         System.out.println("Se han agregado los proyecto a los alumnos y los Asesores a los PT...");
 
-        Alumno.imprimirProyectos();
+        pepe.imprimirProyectos();
+        martin.imprimirProyectos();
 
     }
 }
