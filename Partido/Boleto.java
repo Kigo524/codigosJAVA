@@ -10,7 +10,8 @@ public class Boleto {
     //constructor
     public Boleto(Partido p){
         //aumenta el contdor y lo agrega como numero de boleto
-        this.numBoleto = contadorBoletos+1;
+        Boleto.contadorBoletos++;
+        this.numBoleto = Boleto.contadorBoletos;
         this.p = p;
     }
 
