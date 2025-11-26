@@ -28,7 +28,7 @@ public class Estadio {
                 return p;
             }
         }
-        System.out.println("No se encontro el partido...");
+        System.out.println("\nNo se encontro el partido...");
         return null;
     }
 
@@ -47,7 +47,7 @@ public class Estadio {
     public void imprimirPartidos(){
         for(Partido p: partidos){
             System.out.print(p.toString());
-            System.out.println("---------------------------------------------");
+            System.out.println("\n---------------------------------------------");
         }
     }
 }
