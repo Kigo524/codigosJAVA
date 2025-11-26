@@ -13,6 +13,10 @@ public class ProyectoTerminal {
         this.profes = new ArrayList<Asesor>();
     }
 
+    public String toString(){
+        return "| PT: " +nombrePT;
+    }
+
     public void agregarAsesor (Asesor profe){
         this.profes.add(profe);
     }

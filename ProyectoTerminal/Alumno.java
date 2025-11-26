@@ -22,4 +22,10 @@ public class Alumno {
     public void agregarProyecto(ProyectoTerminal proyecto){
         this.proyectos.add(proyecto);
     }
+
+    public void imprimirProyectos(ProyectoTerminal p){
+        for(ProyectoTerminal p: proyectos){
+            System.out.println(toString());
+        }
+    }
 }

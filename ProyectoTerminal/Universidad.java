@@ -1,7 +1,8 @@
 package ProyectoTerminal;
 
+import java.util.List;
+
 public class Universidad {
-    //atributos
     public static void main(String [] args){
         //se crean dos proyectos 
         ProyectoTerminal carro = new ProyectoTerminal("Carro volador");
@@ -30,6 +31,8 @@ public class Universidad {
         martin.agregarProyecto(tiempo);
 
         System.out.println("Se han agregado los proyecto a los alumnos y los Asesores a los PT...");
+
+        Alumno.imprimirProyectos();
 
     }
 }
