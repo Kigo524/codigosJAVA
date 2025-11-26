@@ -39,5 +39,37 @@ public class Usuario{
         return nuevoBoleto;
     }
 
+    public void imprimirBoletos(){
+        System.out.println("\n---- Boletos de: " +this.nombre+ "----");
+        if(boletos.isEmpty()){
+            System.out.println("No tiene ningun boleto comprado...");
+            return;
+        }
+        for(Boleto b: boletos){
+            System.out.println(b.toString());
+        }
+        System.out.println("-----------------------------------");
+    }
 
+    public boolean cancelarBoleto(int num){
+        Boleto boletoACancelar = null;
+
+        //primero a buscar el boleto
+        for(Boleto b: boletos){
+            if(b.numBoleto == num){
+                boletoACancelar = b;
+                break;
+            }
+        }
+
+        if(boletoACancelar != null){
+            //elimina el boleto del partido
+            boletoACancelar.p.removerBoleto(num);
+            //elmina del usuario tambien
+            this.boletos.remove(boletoACancelar);
+
+            System.out.println("El boleto No: " +num+ " ha sido cancelado exitosamente...");
+            return true;
+        }
+    }
 }
