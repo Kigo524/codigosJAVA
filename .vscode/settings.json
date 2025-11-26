@@ -1,0 +1,7 @@
+{
+    "javascript.suggest.enabled": true,
+    "typescript.suggest.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.inlineSuggest.triggerCommandOnProviderChange": false,
+    "accessibility.verbosity.inlineCompletions": false
+}
