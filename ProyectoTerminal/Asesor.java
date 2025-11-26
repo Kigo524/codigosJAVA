@@ -6,7 +6,7 @@ public class Asesor {
     public int numEconomico;
     public String departamento;
 
-    public Asesor(String nombreAsesor, int numEconomico, String departamento){
+    public Asesor(int numEconomico, String nombreAsesor, String departamento){
         this.nombreAsesor = nombreAsesor;
         this.numEconomico = numEconomico;
         this.departamento = departamento;
