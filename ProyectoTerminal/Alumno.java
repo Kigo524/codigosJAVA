@@ -24,28 +24,28 @@ public class Alumno {
     }
 
     public void imprimirProyectos(){
-        System.out.println("-------- Proyectos de PT1: ---------");
         for(ProyectoTerminal p: proyectos){
             //para imprimir los pt1
             if(p.tipoPT.equalsIgnoreCase("pt1")){
+                System.out.println("-------- Proyectos de PT1: ---------");
                 System.out.println(" " +p.toString());
                 imprimirAsesores(p);
             }
         }
 
-        System.out.println("\n -------- Proyectos de PT2: ---------");
         for(ProyectoTerminal p: proyectos){
             //para imprimir los pt2
             if(p.tipoPT.equalsIgnoreCase("pt2")){
+                System.out.println("\n -------- Proyectos de PT2: ---------");
                 System.out.println(" " +p.toString());
                 imprimirAsesores(p);
             }
         }
 
-        System.out.println("\n -------- Proyectos de PT3: ---------");
         for(ProyectoTerminal p: proyectos){
             //para imprimir los pt2
             if(p.tipoPT.equalsIgnoreCase("pt3")){
+                System.out.println("\n -------- Proyectos de PT3: ---------");
                 System.out.println(" " +p.toString());
                 imprimirAsesores(p);
             }
