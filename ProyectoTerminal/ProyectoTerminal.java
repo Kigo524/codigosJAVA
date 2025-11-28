@@ -29,7 +29,7 @@ public class ProyectoTerminal {
         for(Asesor as: profes){
             //si encuentra el numEco
             if(as.numEconomico == numEco){
-                System.out.println("Asesor " +Asesor.toString.nombreAsesor+ "encontrado... ");
+                System.out.println("Asesor " +as.nombreAsesor+ "encontrado... ");
                 return as;
             }
         }
