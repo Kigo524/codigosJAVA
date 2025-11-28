@@ -61,4 +61,14 @@ public class Alumno {
             System.out.println(" " +a.toString());
         }
     }
+
+    //agrego un metodo para saber si un alumno ya esta trabajando en un proyecto
+    public boolean tieneProyectoTipo(String tipoPT){
+        for(ProyectoTerminal p: proyectos){
+            if(p.tipoPT.equalsIgnoreCase(tipoPT)){
+            return true;
+            }
+        }
+        return false;
+    }
 }
