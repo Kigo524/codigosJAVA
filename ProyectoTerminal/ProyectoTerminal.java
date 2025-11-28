@@ -23,4 +23,17 @@ public class ProyectoTerminal {
     public void agregarAsesor (Asesor profe){
         this.profes.add(profe);
     }
+
+    //falta buscar asesor
+    public Asesor buscarAsesor(int numEco){
+        for(Asesor as: profes){
+            //si encuentra el numEco
+            if(as.numEconomico == numEco){
+                System.out.println("Asesor " +Asesor.toString.nombreAsesor+ "encontrado... ");
+                return as;
+            }
+        }
+        System.out.println("ERROR, no se encontro el asesor con NumEco: " +numEco);
+        return null;
+    }
 }
