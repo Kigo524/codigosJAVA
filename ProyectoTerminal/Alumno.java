@@ -20,7 +20,13 @@ public class Alumno {
     }
 
     public void agregarProyecto(ProyectoTerminal proyecto){
+        //primero debo verifiar si ya tiene un Proyecto, la funcion esta mas abjao
+        if(tieneProyectoTipo(proyecto.tipoPT)){
+            System.out.println("ERROR, el alumno" +this.nombreAlumno+ "ya trabaja en un proyecto de: " +proyecto.tipoPT);
+            return;
+        }
         this.proyectos.add(proyecto);
+        System.out.println("Se ha agregado el proyecto de: " +proyecto.tipoPT+ "al alumno: " +this.nombreAlumno);
     }
 
     public void imprimirProyectos(){
