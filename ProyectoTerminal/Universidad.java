@@ -35,5 +35,12 @@ public class Universidad {
         pepe.imprimirProyectos();
         martin.imprimirProyectos();
 
+        //aqui voy a probar lo ultimo que anadi
+        System.out.println("----- Fase de pruebas de validacion -----");
+        //intento agregar el PT1 a pepe que ya lo tiene
+        System.out.println("Intento agregar de nuevo un proyecto a pepe:");
+        pepe.agregarProyecto(carro);
+
+        
     }
 }
