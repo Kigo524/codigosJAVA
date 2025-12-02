@@ -1,16 +1,16 @@
 package Diccionario;
 
-import java.util.ArrayList;
+import java.util.TreeSet; //esto es para que se agregue en orden
 
 //aqui voy a manejar la lista de palabras
 
 public class Letra {
     private char letra;
-    private ArrayList<Palabra> palabras;
+    private TreeSet<Palabra> palabras; //ocupo TreeSet en ligar de ArrayList
 
     public Letra(char letra) {
         this.letra = letra;
-        this.palabras = new ArrayList<>();
+        this.palabras = new TreeSet<>();
     }
 
     //metodo
@@ -18,14 +18,27 @@ public class Letra {
         palabras.add(p);
     }
 
-    public void buscarPalabra(palabraABuscar){
+    public Palabra buscarPalabra(String palabraABuscar){
         
+        //compara la palabra ya existente con la palabra nueva
         for(Palabra p : palabras){
             if(p.getPalabra().equals(palabraABuscar)){
                 return p;
             }
         }
 
-        System.out.println("ERROR, Palabra no encontrada...")
+        System.out.println("ERROR, Palabra: " +palabraABuscar+ " no encontrada...");
+        return null;
+    }
+
+    public void imprimirPalabras(){
+        for(Palabra p : palabras){
+            System.out.println(" - " + p.toString());
+        }
+    }
+
+    //y el getter para la letra
+    public char getLetra(){
+        return letra;
     }
 }
