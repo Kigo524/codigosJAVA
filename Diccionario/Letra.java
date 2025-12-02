@@ -37,6 +37,9 @@ public class Letra {
         }
     }
 
+    public boolean tienePalabras(){
+        return !palabras.isEmpty(); //para que sea true si el arbol tiene algo dentro
+    }
     //y el getter para la letra
     public char getLetra(){
         return letra;
