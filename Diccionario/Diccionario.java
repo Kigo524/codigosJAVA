@@ -44,5 +44,25 @@ public class Diccionario {
         return null;
     }
 
-    
+    //aqui va a buscar la palabra
+    public String buscarPalabra(String palabraABuscar){
+        String terminoBuscado = palabraABuscar.toLowerCase();
+        if (terminoBuscado.isEmpty()){
+            return "ERROR, la palabra no existe";
+        }
+
+        char inicial = terminoBuscado.charAt(0); //para que busque por la primer letra
+
+        Letra letraContenedora = buscarLetra(inicial); //aqui inicia la busqueda
+
+        if(letraContenedora != null){ //si hay algo en la lista de letras...
+            Palabra resultado = letraContenedora.buscarPalabra(terminoBuscado); //que busque la palabra a buscar por su letra
+
+            if(resultado != null){ //si si encuentra una palabra, que imprima la palabra y la definicion
+                return "Definicion de **" +resultado.getPalabra()+ "**: " +resultado.getDefinicion();
+            }
+        }
+        //si no encuentra la palabra buscada, que retorne null
+        return "Lo siento, la palabra '" +palabraABuscar+ "' no se encuentra en el diccionario";
+    }
 }
