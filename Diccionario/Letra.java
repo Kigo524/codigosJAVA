@@ -18,7 +18,7 @@ public class Letra {
         palabras.add(p);
     }
 
-    public  buscarPalabra(palabraABuscar){
+    public void buscarPalabra(palabraABuscar){
         
         for(Palabra p : palabras){
             if(p.getPalabra().equals(palabraABuscar)){
