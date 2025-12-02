@@ -3,6 +3,7 @@ package Diccionario;
 import java.util.TreeSet; //esto es para que se agregue en orden
 
 //aqui voy a manejar la lista de palabras
+//depende de Palabra
 
 public class Letra {
     private char letra;
