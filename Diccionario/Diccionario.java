@@ -1,6 +1,8 @@
 package Diccionario;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 //esto va a tener la lista de las letras y palabras
 public class Diccionario {
@@ -71,6 +73,8 @@ public class Diccionario {
             System.out.println("El diccionario esta vacio");
             return;
         }
+
+        Collections.sort(this.letras);
 
         for(Letra l : letras){
             l.imprimirPalabras();

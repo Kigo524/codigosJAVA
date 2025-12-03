@@ -5,7 +5,7 @@ import java.util.TreeSet; //esto es para que se agregue en orden
 //aqui voy a manejar la lista de palabras
 //depende de Palabra
 
-public class Letra {
+public class Letra implements Comparable<Letra> {
     private char letra;
     private TreeSet<Palabra> palabras; //ocupo TreeSet en ligar de ArrayList
 
@@ -17,6 +17,10 @@ public class Letra {
     //metodo
     public void agregarPalabra(Palabra p){
         palabras.add(p);
+    }
+
+    public int compareTo(Letra otraLetra){ //que compare las letras
+        return Character.compare(this.letra, otraLetra.getLetra());
     }
 
     public Palabra buscarPalabra(String palabraABuscar){
