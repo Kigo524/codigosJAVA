@@ -18,5 +18,10 @@ public class Main {
         diccionario.agregarPalabra("cabra", "animal que esta loco");
 
         diccionario.imprimirDiccionario();
+
+        //para buscar palabras
+        System.out.println("****PRUEBA DE BUSQUEDA DE PALABRA****");
+        String busqueda1 = diccionario.buscarPalabra("orangutan");
+        System.out.println(busqueda1);
     }
 }

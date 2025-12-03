@@ -32,7 +32,7 @@ public class Letra implements Comparable<Letra> {
             }
         }
 
-        System.out.println("ERROR, Palabra: " +palabraABuscar+ " no encontrada...");
+        //System.out.println("ERROR, Palabra: " +palabraABuscar+ " no encontrada...");
         return null;
     }
 
