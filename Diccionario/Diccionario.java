@@ -65,4 +65,15 @@ public class Diccionario {
         //si no encuentra la palabra buscada, que retorne null
         return "Lo siento, la palabra '" +palabraABuscar+ "' no se encuentra en el diccionario";
     }
+
+    public void imprimirDiccionario(){
+        if(letras.isEmpty()){
+            System.out.println("El diccionario esta vacio");
+            return;
+        }
+
+        for(Letra l : letras){
+            l.imprimirPalabras();
+        }
+    }
 }
