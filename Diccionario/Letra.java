@@ -1,5 +1,6 @@
 package Diccionario;
 
+import java.security.PublicKey;
 import java.util.TreeSet; //esto es para que se agregue en orden
 
 //aqui voy a manejar la lista de palabras
@@ -48,5 +49,10 @@ public class Letra implements Comparable<Letra> {
     //y el getter para la letra
     public char getLetra(){
         return letra;
+    }
+
+    //getter para mandar al archivo de diccionario
+    public TreeSet<Palabra> getPalabras(){
+        return palabras;
     }
 }

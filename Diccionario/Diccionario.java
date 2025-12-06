@@ -1,8 +1,12 @@
 package Diccionario;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 //esto va a tener la lista de las letras y palabras
 public class Diccionario {
@@ -80,4 +84,26 @@ public class Diccionario {
             l.imprimirPalabras();
         }
     }
+
+    //ahora para guardarla en un archivo
+    public void guardar(String nombreArchivo){
+        try(FileWriter fw = new FileWriter(nombreArchivo, false)){
+            Collections.sort(this.letras);
+
+            //que recorra todas las listas de letra y palabra
+            for(Letra l : this.letras){
+                for(Palabra p : l.getPalabras()){
+                    //aqui se guarda el formate de como se va a guardar
+                    String linea = p.getPalabra() +" | "+ p.getDefinicion() +"\n";
+                    fw.write(linea);
+                }
+            }
+            System.out.println("Diccionario guardado correctamente en: " +nombreArchivo);
+        } catch (IOException e){
+            System.out.println("Error al guardar: " +e.getMessage());
+        }//aqui se deberia cerrar el programa
+    }
+
+    //ahora necesito que se cargue
+    
 }
