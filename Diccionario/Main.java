@@ -4,9 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // primero quiero que imprima el diccionario
+        String NOMBRE_ARCHIVO = "diccionario.txt";
         Diccionario diccionario = new Diccionario();
-        diccionario.imprimirDiccionario(); // aqui sale vacio
+
+        //que primero cargue el diccionario
+        diccionario.cargar(NOMBRE_ARCHIVO);
 
         // ahora si agrego las palabras al diccionario
         diccionario.agregarPalabra("abeja", "insecto productor de miel");
@@ -23,5 +25,8 @@ public class Main {
         System.out.println("****PRUEBA DE BUSQUEDA DE PALABRA****");
         String busqueda1 = diccionario.buscarPalabra("orangutan");
         System.out.println(busqueda1);
+
+        //que al final de agregar, eliminar y todo, que guarde el archivo
+        diccionario.guardar(NOMBRE_ARCHIVO);
     }
 }
