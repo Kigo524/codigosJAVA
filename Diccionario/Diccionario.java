@@ -104,6 +104,42 @@ public class Diccionario {
         }//aqui se deberia cerrar el programa
     }
 
-    //ahora necesito que se cargue
-    
+    //esto tendria que ir al inicio del MAIN
+    //ahora necesito que se cargue usando SCANNER
+    public void cargar(String nombreArchivo){
+        File archivo = new File(nombreArchivo);
+
+        //si el archivo no existe, se termina la carga
+        if(!archivo.exists()){
+            System.out.println("Archivo de diccionario no encontrado. Iniciando vacio");
+            return;
+        }
+
+        //uso try para por si hay un error
+        try (Scanner scanner = new Scanner(archivo)){
+            int contador =0; //para llevar las palabras cargadas
+
+            //leer linea por linea
+            while(scanner.hasNextLine()){
+                String linea = scanner.nextLine();
+
+                //ahora agrego para que separe letra y palabra por el caracter especial
+                if(linea.contains("|")){
+                    String[] partes = linea.split("\\|"); //que se separe por el caracter especial
+
+                    if(partes.length >= 2){
+                        String palabra = partes[0].trim();
+                        String definicion = partes[1].trim();
+
+                        //reuso el metodo de agregarPalabra
+                        this.agregarPalabra(palabra, definicion);
+                        contador++; //aqui es donde se lleva el contador
+                    }
+                }
+            }
+            System.out.println("Se cargaron " +contador+ " palabras desde el archivo " +nombreArchivo);
+        } catch (IOException e){
+            System.out.println("Error al cargar el archivo: " +e.getMessage());
+        }
+    }
 }
