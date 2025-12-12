@@ -17,13 +17,23 @@ public abstract class MaterialBibliografico {
         this.disponible=true;
     }
 
-    //getter disponible
+    //agrego los getters por lo del encapsulamiento
+    public String getId(){return id;}
+    public String getTitulo(){return titulo;}
+    public String getAutor(){return autor;}
+    public int getAnioPublicacion(){return anioPublicacion;}
+
+    //getter de disponible
     public boolean isDisponible(){
         return this.disponible;
     }
 
-    //setter disponible
+    //setter de disponible
     public void setDisponible(boolean disponible){
         this.disponible=disponible; //para que cambie entre true o false segun lo que escriba
     }
+
+    //agrego el metodo abstracto para usar en el polimorfismo
+    //aqui solo se declara este metodo
+    public abstract String obtenerInformacion();
 }
