@@ -17,5 +17,13 @@ public abstract class MaterialBibliografico {
         this.disponible=true;
     }
 
-    
+    //getter disponible
+    public boolean isDisponible(){
+        return this.disponible;
+    }
+
+    //setter disponible
+    public void setDisponible(boolean disponible){
+        this.disponible=disponible; //para que cambie entre true o false segun lo que escriba
+    }
 }

@@ -13,4 +13,8 @@ public class Libro extends MaterialBibliografico{
         this.numPaginas=numPaginas;
         this.numEdicion=numEdicion;
     }
+
+    public String toString(){
+        return "Datos de libro: " +titulo+ " | Id: " +id+ " | Autor: " +autor+ " | Año Publicado: " +anioPublicacion+ " | Editorial: " +editorial+ " | Páginas: " +numPaginas+ " | Edición: " +numEdicion;
+    }
 }
