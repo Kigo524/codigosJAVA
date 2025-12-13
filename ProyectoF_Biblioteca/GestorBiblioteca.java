@@ -18,5 +18,16 @@ public class GestorBiblioteca {
         System.out.println("Se ha agregado el material: " +material.getTitulo());
     }
 
-    
+    public void listarCatalogoCompleto() {
+        //Verificar si el catálogo está vacío
+        if(catalogo.isEmpty()){
+            System.out.println("El catálogo está vacío...");
+        }
+        //Si no está vacío, recorrer la lista con el método polimórfico
+        System.out.println("Catálogo de articulos **************************** \n");
+        for(MaterialBibliografico m : catalogo){
+            System.out.println(" " +m.toString()); //para el tostring de cada elemento segun corresponda
+        }
+        System.out.println("**************************** \n");
+    }
 }
