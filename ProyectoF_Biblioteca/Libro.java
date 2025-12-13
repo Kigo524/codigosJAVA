@@ -22,7 +22,8 @@ public class Libro extends MaterialBibliografico{
 
     public int getNumEdicion(){return numEdicion;} //aqui lo mismo que ARRIBA
 
-    //para usar el polimorfismo...
+    //para usar el polimorfismo... agrego override para qeu sepa el compilador que va a sobreescribir
+    @Override
     public String obtenerInformacion(){
         String info= "Datos del libro: " +titulo+ "*****************************\n";
         info+= "Id: " +id+ " || Autor: " +autor+ "\n";
