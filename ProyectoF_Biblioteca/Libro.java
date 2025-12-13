@@ -32,6 +32,7 @@ public class Libro extends MaterialBibliografico{
         return info;
     }
 
+    //dejo el toString para hacerlo mas facil en la lista final
     public String toString(){
         return obtenerInformacion();
     }
