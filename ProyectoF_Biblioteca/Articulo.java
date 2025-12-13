@@ -13,8 +13,10 @@ public class Articulo extends MaterialBibliografico{
     }
 
     //getters y seters
-    public String getNomPubliCont(){return nombrePublicacionContenedora;}
-    public void setNomPubliCont(String nombrePublicacionContenedora){this.nombrePublicacionContenedora=nombrePublicacionContenedora;}
+    public String getNombrePublicacionContenedora(){return nombrePublicacionContenedora;}
+    public void setgetNombrePublicacionContenedora(String nombrePublicacionContenedora){
+        this.nombrePublicacionContenedora=nombrePublicacionContenedora;
+    }
 
     public String getRangoPaginas(){return rangoPaginas;}
 
