@@ -14,7 +14,25 @@ public class Libro extends MaterialBibliografico{
         this.numEdicion=numEdicion;
     }
 
+    //getters y setters
+    public String getEditorial(){return editorial;}
+    public void setEditorial(String editorial){this.editorial=editorial;}
+
+    public int getNumPaginas(){return numPaginas;} //aqui creo que no necesito setters, sino AGREGO DESPUES
+
+    public int getNumEdicion(){return numEdicion;} //aqui lo mismo que ARRIBA
+
+    //para usar el polimorfismo...
+    public String obtenerInformacion(){
+        String info= "Datos del libro: " +titulo+ "*****************************\n";
+        info+= "Id: " +id+ " || Autor: " +autor+ "\n";
+        info+= "Año publicación: " +anioPublicacion+ " || Editorial: " +editorial+ "\n";
+        info+= "Páginas: " +numPaginas+ " || Edicion: " +numEdicion+ "\n";
+        info+= "Disponible: " +(disponible ? "Si" : "No")+ "\n";
+        return info;
+    }
+
     public String toString(){
-        return "Datos de libro: " +titulo+ " | Id: " +id+ " | Autor: " +autor+ " | Año Publicado: " +anioPublicacion+ " | Editorial: " +editorial+ " | Páginas: " +numPaginas+ " | Edición: " +numEdicion;
+        return obtenerInformacion();
     }
 }
