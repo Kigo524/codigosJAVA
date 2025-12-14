@@ -30,4 +30,30 @@ public class GestorBiblioteca {
         }
         System.out.println("**************************** \n");
     }
+
+    //aqui el metodo va a buscar materiales por titulo y devolver los que coincidam
+    //necesito que los que coinciden los ponga en una lista
+    public List<MaterialBibliografico> buscarPorTitulo(String tituloBusqueda){
+        //ahora creo la lista vacia y que se cree solo en lo que se usa el metodo
+        List<MaterialBibliografico> resultados = new ArrayList<>();
+
+        //aqui es para que se normalice la busqueda sin importar las mayusculas
+        String tituloNormalizado= tituloBusqueda.toLowerCase();
+
+        //Ahora si agrego el recorrido del catalogo
+        //tiene que recorrer todo el catalogo
+        for(MaterialBibliografico material : catalogo){
+            String tituloMaterial = material.getTitulo().toLowerCase(); //la lista que tengo de Material bibliografico
+
+            //para comparar uso .contains() para encontrar mas coincidencias
+            //para que si escribo POO encuentre "Libro de POO"
+            //que busque: si el titulo del material contiene la palabra buscada...
+            if(tituloMaterial.contains(tituloNormalizado)){
+                //si encuentra una coincidencia la agrega a la lista provicional
+                resultados.add(material);
+            }
+        }
+
+        return resultados;
+    }
 }
