@@ -56,4 +56,41 @@ public class GestorBiblioteca {
 
         return resultados;
     }
+
+    //para el buscar por autor es practicamente el mismo codigo de arriba
+    public List<MaterialBibliografico> buscarPorAutor(String autorBusqueda){
+        //creo la lista vacia y qeu solo se use mientras se usa el metodo
+        List<MaterialBibliografico> resultados = new ArrayList<>();
+
+        //aqui es para normalizar la busqueda sin importar mayusculas
+        String autorNormalizado = autorBusqueda.toLowerCase();
+
+        //aqui el recorrido del catalogo
+        for(MaterialBibliografico material : catalogo){
+            String autorMaterial = material.getAutor().toLowerCase();
+
+            //la comparativa sigo usando .contains para que ecneuntra algo parcial
+            if(autorMaterial.contains(autorNormalizado)){
+                resultados.add(material);
+            }
+        }
+        return resultados;
+    }
+
+    //ahora va a la busqueda por año, aqui ya no necesito .contains
+    //sigo creando la lista temporal para el metodo
+    public List<MaterialBibliografico> buscarPorAnio(int anioBusqueda){
+        //creo la lista vacia 
+        List<MaterialBibliografico> resultados = new ArrayList<>();
+
+        //que recorra todo el catalogo
+        for(MaterialBibliografico material : catalogo){
+            int anioMaterial = material.getAnioPublicacion();
+
+            if(anioMaterial == anioBusqueda){
+                resultados.add(material);
+            }
+        }
+        return resultados;
+    }
 }
