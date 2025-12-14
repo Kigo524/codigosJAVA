@@ -101,9 +101,8 @@ public class GestorBiblioteca {
 
         //aqui recorre todo el catalogo
         for(MaterialBibliografico material : catalogo){
-            boolean disponibleMaterial = material.isDisponible();
 
-            if(disponibleMaterial == true){
+            if(material.isDisponible()){
                 resultados.add(material);
             }
         }
