@@ -93,4 +93,20 @@ public class GestorBiblioteca {
         }
         return resultados;
     }
+
+    //ahora copio el de buscarPorAnio para el materialDsiponible
+    public List<MaterialBibliografico> listarMaterialesDisponible(){
+        //creo la lista vacia
+        List<MaterialBibliografico> resultados = new ArrayList<>();
+
+        //aqui recorre todo el catalogo
+        for(MaterialBibliografico material : catalogo){
+            boolean disponibleMaterial = material.isDisponible();
+
+            if(disponibleMaterial == true){
+                resultados.add(material);
+            }
+        }
+        return resultados;
+    }
 }
