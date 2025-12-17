@@ -34,5 +34,15 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion; //ahora si por si hay que registrar fecha de devuelto
     }
 
-    
+    //toString para que haga de ticket del prestamo
+    public String toString(){
+        String estado = (fechaDevolucion == null) ? "ACTIVO" : "DEVUELTO";
+        return "***Prestamo " +estado+ " *** \n"+
+                "ID: " +idPrestamo+ "\n"+
+                "Material: " +material.getTitulo()+ " (ID: " +material.getId()+ ")\n"+
+                "Matricula de Usuario: " +matriculaUsuario+ "\n"+
+                "Fecha Préstamo: " +fechaPrestamo+ "\n"+
+                "Fecha Devolución: " +(fechaDevolucion != null ? fechaDevolucion.toString() : "PENDIENTE");
+                //aqui uso el operador ternario, aqui arriba
+    }
 }
