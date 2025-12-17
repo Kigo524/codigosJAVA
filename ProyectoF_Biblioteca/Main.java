@@ -46,9 +46,86 @@ public class Main {
     }
 
     //menu de usuario
+    private static void menuUsuario(Scanner scanner, GestorBiblioteca gestor){
+        System.out.println("\n--- IDENTIFICACION DE USUARIO ---");
+        System.out.println("Ingrese su matricula para acceder: "); //para saber que usuario es (de los creados en la funcion del inicio)
+        String matricula = scanner.nextLine();
+
+        Usuario usuarioActual = gestor.buscarUsuario(matricula);
+        if(usuarioActual == null){ //si no lo encuentra...
+            System.out.println("Usuario no encontrado. Contacte a la biblioteca");
+            return; //salir del menu por no encontrar al usaurio
+        }
+        System.out.println("Bienvenido, " +usuarioActual.getNombre());
+
+        int opcion = -1;
+        while (opcion != 0){
+            System.out.println("\n--- MENU USUARIO --- ");
+            System.out.println("1. Solicitar prestamo");
+            System.out.println("2. Devolver prestamo");
+            System.out.println("3. Buscar material por TITULO");
+            System.out.println("4. Buscar material por AUTOR");
+            System.out.println("5. Buscar material por ANIO");
+            System.out.println("6. Ver mis prestamos actuales");
+            System.out.println("0. Regresar al menu principal");
+            System.out.println(">>> Opcion: ");
+
+            try{
+                opcion = Integer.parseInt(scanner.nextLine());
+                switch(opcion){
+                    case 1:
+                        System.out.println("ID del material a prestar: ");
+                        String idP = scanner.nextLine();
+                        gestor.solicitarPrestamo(idP, matricula);
+                        break;
+                    case 2:
+                        System.out.println("ID del material a devolver: ");
+                        String idD = scanner.nextLine();
+                        gestor.devolverMaterial(idD);
+                        break;
+                    case 3:
+                        System.out.println("Titulo a buscar: ");
+                        var resTit = gestor.buscarPorTitulo(scanner.nextLine());
+                        mostrarResultados(resTit); //este metodo esta mas abajo
+                        break;
+                    case 4:
+                        System.out.println("Autor a buscar: ");
+                        var resAut = gestor.buscarPorAutor(scanner.nextLine());
+                        mostrarResultados(resAut);
+                        break;
+                    case 5:
+                        System.out.println("Anio a buscar: ");
+                        try{ //aqui meto otro try para que el sistema sepa que hacer y pueda volver a intentarlo
+                            int anio = Integer.parseInt(scanner.nextLine());
+                            var resAnio = gestor.buscarPorAnio(anio);
+                            mostrarResultados(resAnio);
+                        } catch (NumberFormatException e){
+                            System.out.println("ERROR: anio invalido");
+                        }
+                        break;
+                    case 6:
+                        System.out.println(usuarioActual.toString()); //porque el tostring ya muestra los prestamos del usuario
+                        if(usuarioActual.getMisPrestamos().isEmpty()){
+                            System.out.println("No tiene prestamos activos");
+                        } else {
+                            for(Prestamo p : usuarioActual.getMisPrestamos()){
+                                System.out.println(p);
+                            }
+                        }
+                        break;
+                    case 0:
+                        break; //solo que salga
+                    default:
+                        System.out.println("Opcion invalida");
+                }
+            } catch(NumberFormatException e){
+                System.out.println("ERROR: Ingrese un numero");
+            }
+        }
+    }
 
     //menu de biblioteca
-    private static void menuUsuario(Scanner scanner, GestorBiblioteca gestor){
+    private static void menuBiblioteca(Scanner scanner, GestorBiblioteca gestor){
         System.out.println("\n--- MENU BIBLIOTECA (ADMINISTRACION) ---");
         System.out.println("1. Registrar nuevo material");
         System.out.println("2. Registrar nuevo usuario");
