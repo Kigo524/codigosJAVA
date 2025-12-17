@@ -14,17 +14,21 @@ public class Main {
         Libro libro1 = new Libro("L001", "Programación Orientada a Objetos", "Juan Pérez", 2023, true, 450);
         Articulo articulo1 = new Articulo("A002", "El Futuro del Java", "Maria Lopez", 2024, true, "Java Journal");
         Libro libro2 = new Libro("L003", "Diseño de Algoritmos", "Carlos Ruiz", 2021, true, 600);
+        Revista revista1 = new Revista("R001", "Ciencia Hoy", "Varios Autores", 2024, true, "Ciencia Hoy", 15, 3);
 
         gestor.agregarMaterial(libro1);
         gestor.agregarMaterial(articulo1);
         gestor.agregarMaterial(libro2);
+        gestor.agregarMaterial(revista1);
 
         //aqui los usuarios de prueba
         Usuario usuarioA = new Usuario("Ana Garcia", "1001");
         Usuario usuarioB = new Usuario("Beto Flores", "1002");
+        Usuario usuarioC = new Usuario("Carmen Cadena", "1003");
 
         gestor.registrarUsuario(usuarioA);
         gestor.registrarUsuario(usuarioB);
+        gestor.registrarUsuario(usuarioC);
 
         System.out.println("*** INICIANDO CON DATOS DE PRUEBA ***");
 
