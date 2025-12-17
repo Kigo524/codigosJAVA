@@ -1,8 +1,107 @@
 package ProyectoF_Biblioteca;
 
 import java.util.Scanner;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        GestorBiblioteca gestor = new GestorBiblioteca();
+
+        //carga de datos de prueba para que no empiecen vacios
+        inicializarDatosPrueba(gestor);
+
+        int opcionPrincipal= -1;
+        while(opcionPrincipal != 0){
+            //este va a ser el menu "Principal" para elegir cual el tipo de menu a mostrar
+            System.out.println("**** SISTEMA DE BIBLIOTECA ****");
+            System.out.println("1. Menu USUARIO (prestamos, consultas)");
+            System.out.println("2. Menu biblioteca (administracion, reportes)");
+            System.out.println("0. Salir");
+            System.out.println(">>> Seleccione su rol: ");
+
+            try{
+                String entrada = scanner.nextLine();
+                opcionPrincipal = Integer.parseInt(entrada);
+
+                switch(opcionPrincipal){
+                    case 1:
+                        menuUsuario(scanner, gestor);
+                        break;
+                    case 2:
+                        menuBiblioteca(scanner, gestor);
+                        break;
+                    case 0:
+                        System.out.println("Guardando datos y saliendo... FALTA LOS ARCHIVOS");
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                }
+            } catch (NumberFormatException e){
+                System.out.println("ERROR: Ingrese un numero");
+            }
+        }
+        scanner.close();
+    }
+
+    //menu de usuario
+
+    //menu de biblioteca
+    private static void menuUsuario(Scanner scanner, GestorBiblioteca gestor){
+        System.out.println("\n--- MENU BIBLIOTECA (ADMINISTRACION) ---");
+        System.out.println("1. Registrar nuevo material");
+        System.out.println("2. Registrar nuevo usuario");
+        System.out.println("3. Imprimir catalogo completo");
+        System.out.println("4. Imprimir solo libros");
+        System.out.println("5. Imprimir solo revistas");
+        System.out.println("6. Imprimir solo articulos");
+        System.out.println("7. Imprimir lista de usuarios");
+        System.out.println("8. Ver historial de prestamos");
+        System.out.println("0. Regresar al Menu principal");
+        System.out.println(">>> Opcion: ");
+
+        try{ //para evitar algun error
+            opcion = Integer.parseInt(scanner.nextLine());
+            switch(opcion){
+
+            }
+        }
+    }
+
+
+    //metodos individuales
+    private static void mostrarResultados(List<MaterialBibliografico> lista){
+        if(lista.isEmpty()){
+            System.out.println("No se encontraron resultados...");
+        } else {
+            for(MaterialBibliografico m : lista){
+                System.out.println(m);
+            }
+        }
+    }
+
+    private static void inicializarDatosPrueba(GestorBiblioteca gestor){
+        gestor.agregarMaterial(new Libro("L001", "Java para Principiantes", "Juan Perez", 2023, true, 450));
+        gestor.agregarMaterial(new Revista("R001", "Tech Trends", "Varios", 2024, true, "Tech Weekly", 10, 2));
+        gestor.registrarUsuario(new Usuario("Estudiante 1", "1001"));
+        gestor.registrarUsuario(new Usuario("Admin prueba", "ADMIN"));
+    }
+
+    private static void registrarUsuarioInteractivo(Scanner scanner, GestorBiblioteca gestor){
+        System.out.println("--- Nuevo usuario ---");
+        System.out.println("Nombre: ");
+        String nombre = scanner.nextLine();
+        System.out.println("Matricula: ");
+        String matricula = scanner.nextLine();
+        gestor.registrarUsuario(new Usuario(nombre, matricula)); //del gestor
+    }
+}
+
+/*
+import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List; //ara la lista de resultados
+import java.util.List; //para la lista de resultados
 
 public class Main {
     
@@ -174,3 +273,4 @@ public class Main {
         }
     }
 }
+*/
