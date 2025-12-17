@@ -6,10 +6,10 @@ public class Articulo extends MaterialBibliografico{
     private String rangoPaginas;
 
     //contrsuctor
-    public Articulo(String id, String titulo, String autor, int anioPublicacion, String nombrePublicacionContenedora, String rangoPaginas){
-        super(id, titulo, autor, anioPublicacion);
+    public Articulo(String id, String titulo, String autor, int anioPublicacion, boolean disponible, String nombrePublicacionContenedora){
+        super(id, titulo, autor, anioPublicacion, disponible);
         this.nombrePublicacionContenedora=nombrePublicacionContenedora; //en que momento le di un nombre tan largo??
-        this.rangoPaginas=rangoPaginas;
+        this.rangoPaginas="No definido";
     }
 
     //getters y seters
@@ -23,16 +23,12 @@ public class Articulo extends MaterialBibliografico{
     //ahora el polimorfismo
     @Override
     public String obtenerInformacion(){
-        String info= "Datos del Articulo: " +titulo+ "*****************************\n";
-        info+= "Id: " +id+ " || Autor: " +autor+ "\n";
-        info+= "Año publicación: " +anioPublicacion+ "\n";
-        info+= "Ubicado en la publicación: " +nombrePublicacionContenedora+ "\n";
-        info+= "Rango de páginas: " +rangoPaginas+ "\n";
-        info+= "Disponible: " +(disponible ? "Si" : "No")+ "\n";
+        String info = "ARTÍCULO: " + titulo + " (ID: " + id + ")\n";
+        info += "   Autor: " + autor + " | Año: " + anioPublicacion + "\n";
+        info += "   Publicado en: " + nombrePublicacionContenedora + "\n";
+        info += "   Disponible: " + (disponible ? "SÍ" : "NO") + "\n";
         return info;
     }
 
-    public String toString(){
-        return obtenerInformacion();
-    }
+    //el toString lo saca desde MaterialBibliografico
 }

@@ -9,12 +9,12 @@ public abstract class MaterialBibliografico {
     protected boolean disponible;
 
     //constructor para atributos
-    public MaterialBibliografico(String id, String titulo, String autor, int anioPublicacion){
+    public MaterialBibliografico(String id, String titulo, String autor, int anioPublicacion, boolean disponible){
         this.id=id;
         this.titulo=titulo;
         this.autor=autor;
         this.anioPublicacion=anioPublicacion;
-        this.disponible=true;
+        this.disponible=disponible; //corregí despues y ahora toma el valor que manda el main
     }
 
     //agrego los getters por lo del encapsulamiento
@@ -36,4 +36,8 @@ public abstract class MaterialBibliografico {
     //agrego el metodo abstracto para usar en el polimorfismo
     //aqui solo se declara este metodo
     public abstract String obtenerInformacion();
+
+    public String toString(){
+        return obtenerInformacion();
+    }
 }

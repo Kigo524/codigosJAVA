@@ -7,8 +7,8 @@ public class Revista extends MaterialBibliografico{
     private int numEdicion;
 
     //constructr
-    public Revista(String id, String titulo, String autor, int anioPublicacion, String nombreRevista, int numVolumen, int numEdicion){
-        super(id, titulo, autor, anioPublicacion);
+    public Revista(String id, String titulo, String autor, int anioPublicacion, boolean disponible, String nombreRevista, int numVolumen, int numEdicion){
+        super(id, titulo, autor, anioPublicacion, disponible); //ahora tambien recibe disponible del main
         this.nombreRevista=nombreRevista;
         this.numVolumen=numVolumen;
         this.numEdicion=numEdicion;
@@ -25,11 +25,10 @@ public class Revista extends MaterialBibliografico{
     //para eñ polimorfismo entiendo se escribe @override para el compilador sepa que es polimorfismo
     @Override
     public String obtenerInformacion(){
-        String info= "Datos de la revista: " +titulo+ "*****************************\n";
-        info+= "Id: " +id+ " || Autor: " +autor+ "\n";
-        info+= "Año publicación: " +anioPublicacion+ " || Nombre de Revista: " +nombreRevista+ "\n";
-        info+= "Volumen: " +numVolumen+ " || Edición: " +numEdicion+ "\n";
-        info+= "Disponible: " +(disponible ? "Si" : "No")+ "\n";
+        String info = "REVISTA: " + titulo + " (ID: " + id + ")\n";
+        info += "   Autor: " + autor + " | Año: " + anioPublicacion + "\n";
+        info += "   Revista: " + nombreRevista + " | Volumen: " + numVolumen + " | Edición: " + numEdicion + "\n";
+        info += "   Disponible: " + (disponible ? "SÍ" : "NO") + "\n";
         return info;
     }
 
