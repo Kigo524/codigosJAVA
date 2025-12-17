@@ -3,6 +3,12 @@ package ProyectoF_Biblioteca;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+//para los txt
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import java.time.LocalDate;
+//los de arriba son para txt
 
 public class GestorBiblioteca {
     //atributos
@@ -260,4 +266,88 @@ public class GestorBiblioteca {
             System.out.println("No hay material de este tipo...");
         }
     }
+
+    //para los txt, voy a separar los objetos por simbolos
+    public void guardarDatos(){
+        guardarCatalogo();
+        guardarUsuarios();
+        guardarPrestamos();
+    }
+
+    private void guardarCatalogo(){
+        try(PrintWriter writer = new PrintWriter(new FileWriter("catalogo.txt"))){
+            //que se cree una linea de texto por cada objeto
+            for(MaterialBibliografico m : catalogo){
+                String linea = m.getClass().getSimpleName() + "|" + m.getId() + "|" + m.getTitulo() + "|" + 
+                                m.getAutor() + "|" + m.getAnioPublicacion() + "|" + m.isDisponible();
+                
+                if(m instanceof Libro) {linea += "|" +((Libro) m).getNumPaginas();}
+                else if(m instanceof Revista) {linea += "|" +((Revista) m).getNombreRevista()+
+                                            "|"+ ((Revista) m).getNumVolumen()+ "|"+ ((Revista) m).getNumEdicion();}
+                else if(m instanceof Articulo) {linea += "|"+ ((Articulo) m).getNombrePublicacionContenedora();}
+
+                writer.println(linea);
+                }
+            }
+        catch(IOException e) {System.out.println("ERROR al guardar catalogo: " +e.getMessage());}
+    }
+
+    private void guardarUsuarios(){
+        try(PrintWriter writer = new PrintWriter(new FileWriter("usuario.txt"))){
+            for(Usuario u : usuarios){//que cree una linea por cada objeto separado por el |
+                writer.println(u.getNombre() +"|"+ u.getMatricula());
+            }
+        } catch(IOException e){
+            System.out.println("ERROR al guardar usuarios: " +e.getMessage());
+        }
+    }
+
+    private void guardarPrestamos(){
+        try(PrintWriter writer = new PrintWriter(new FileWriter("prestamos.txt"))){
+            for(Prestamo p: prestamos){
+                //se guarda ID material y matricula para reconstruir el vinculo al cargar
+                String fechaDev = (p.getFechaDevolucion() != null) ? p.getFechaDevolucion().toString() : "null";
+                    writer.println(p.getMaterial().getId() + "|" + p.getMatriculaUsuario() + "|" + 
+                    p.getFechaPrestamo() + "|" + fechaDev + "|" + p.getIdPrestamo());
+            }
+        } catch(IOException e) {System.out.println("ERROR al guardar prestamos: " +e.getMessage());}
+    }
+
+    public void cargarDatos(){
+        cargarUsuaios();
+        //cargarCatalogo();
+        //cargarPrestamos();
+    }
+
+    private void cargarUsuaios(){
+        File archivo = new File("usuarios.txt");
+        if(!archivo.exists()){
+            return;
+        }
+        try(Scanner reader = new Scanner(archivo)){
+            while(reader.hasNextLine()){
+                String[] datos = reader.nextLine().split("\\|");
+                usuarios.add(new Usuario(datos[0], datos[1]));
+            }
+        } catch(FileNotFoundException e) { }
+    }
+
+    //y hasta aqui le dejo porque son las 3:40 am y tengo que prepararme para la esculea
+
+    /*
+    private void cargarCatalogo(){
+        File archivo = new File("catalogo.txt");
+        if(!archivo.exists()) return;
+        try(Scanner reader = new Scanner(archivo)){
+            while(reader.hasNextLine()){
+                String[] d = reader.nextLine().split("\\|");
+                String tipo = d[0];
+                boolean disp = Boolean.parseBoolean(d[5]);
+
+                if(tipo.equals("Libro")){
+                    catalogo.add(new Libro(d, tipo, tipo, 0, disp, 0))
+                }
+            }
+        }
+    }*/
 }
