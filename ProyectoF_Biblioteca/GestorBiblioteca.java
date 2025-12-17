@@ -6,10 +6,16 @@ import java.util.List;
 public class GestorBiblioteca {
     //atributos
     private List<MaterialBibliografico> catalogo;
+    //despuesde crear Prestamo y Usuario agrego el otro
+    private List<Usuario> usuarios;
+    private List<Prestamo> prestamos;
 
     //constructor para crear la lista
     public GestorBiblioteca(){
         this.catalogo= new ArrayList<>();
+        //tambien aqui agrego usuarios y prestamos
+        this.usuarios= new ArrayList<>();
+        this.prestamos= new ArrayList<>();
     }
 
     //metodo para agregar a la lista
@@ -108,4 +114,26 @@ public class GestorBiblioteca {
         }
         return resultados;
     }
+
+    //------Aqui va la parte despues de crear Usuario y Prestamo-----
+    //ahora neccesito ver como gestionar catalogo, usuarios y preastamos
+
+    public void registrarUsuario(Usuario usuario){
+        //para agregar al usuario a la lista this.usuarios
+        usuarios.add(usuario);
+        System.out.println("Usuario Registrado: " +usuario.getNombre());
+    }
+
+    //lo voy a hacer para buscar por matricula
+    public Usuario buscarUsuario(String matricula){
+        //recorre la lista de usuarios
+        for(Usuario u : usuarios){
+            if(u.getMatricula().equalsIgnoreCase(matricula)){
+                return u;
+            }
+        }
+        return null; //si no encuentra la matricula
+    }
+
+    
 }
