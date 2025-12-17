@@ -219,4 +219,45 @@ public class GestorBiblioteca {
         System.out.println("El material ya está disponible en el catálogo.");
         return true;
     }
+
+    //*****aqui van mas metodos para el modo "administrador" */
+    public void listarUsuarios(){
+        if(usuarios.isEmpty()){
+            System.out.println("No hay usuarios registrados...");
+        } else {
+            System.out.println("--- Lista de usuarios registrados ---");
+            for(Usuario u : usuarios) {
+                System.out.println(u.toString());
+            }
+        }
+    }
+
+    //para el historial de prestamos pero de todos
+    public void listarHistorialPrestamos(){
+        if(prestamos.isEmpty()){
+            System.out.println("No hay registro de prestamos en el historial");
+        } else {
+            System.out.println("--- Historial completo de prestamos ---");
+            for(Prestamo p : prestamos){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    //la tarea pide listar por tipo de material
+    //encontre que se usa "Class<?>" para filtar por clase
+    public void listarMaterialPorTipo(Class<?> tipoClass){
+        System.out.println("--- Listando: " +tipoClass.getSimpleName()+ " ---");
+        boolean encontrado = false;
+        for(MaterialBibliografico m : catalogo){
+            //verifica si m se encuentra en la clase solicitada
+            if(tipoClass.isInstance(m)){
+                System.out.println(m.toString());
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No hay material de este tipo...");
+        }
+    }
 }
