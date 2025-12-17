@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Main {
 
+    //menu principal
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         GestorBiblioteca gestor = new GestorBiblioteca();
@@ -126,22 +127,54 @@ public class Main {
 
     //menu de biblioteca
     private static void menuBiblioteca(Scanner scanner, GestorBiblioteca gestor){
-        System.out.println("\n--- MENU BIBLIOTECA (ADMINISTRACION) ---");
-        System.out.println("1. Registrar nuevo material");
-        System.out.println("2. Registrar nuevo usuario");
-        System.out.println("3. Imprimir catalogo completo");
-        System.out.println("4. Imprimir solo libros");
-        System.out.println("5. Imprimir solo revistas");
-        System.out.println("6. Imprimir solo articulos");
-        System.out.println("7. Imprimir lista de usuarios");
-        System.out.println("8. Ver historial de prestamos");
-        System.out.println("0. Regresar al Menu principal");
-        System.out.println(">>> Opcion: ");
+        int opcion = -1;
+        while(opcion != 0){
+            System.out.println("\n--- MENU BIBLIOTECA (ADMINISTRACION) ---");
+            System.out.println("1. Registrar nuevo material");
+            System.out.println("2. Registrar nuevo usuario");
+            System.out.println("3. Imprimir catalogo completo");
+            System.out.println("4. Imprimir solo libros");
+            System.out.println("5. Imprimir solo revistas");
+            System.out.println("6. Imprimir solo articulos");
+            System.out.println("7. Imprimir lista de usuarios");
+            System.out.println("8. Ver historial de prestamos");
+            System.out.println("0. Regresar al Menu principal");
+            System.out.println(">>> Opcion: ");
 
-        try{ //para evitar algun error
-            opcion = Integer.parseInt(scanner.nextLine());
-            switch(opcion){
-
+            try{
+                opcion = Integer.parseInt(scanner.nextLine());
+                switch(opcion){
+                    case 1:
+                        registrarMaterialInteractivo(scanner, gestor); //la funcion esta mas abajo
+                        break;
+                    case 2:
+                        registrarUsuarioInteractivo(scanner, gestor);
+                        break;
+                    case 3:
+                        gestor.listarCatalogoCompleto();
+                        break;
+                    case 4:
+                        gestor.listarMaterialPorTipo(Libro.class); //para que filtre solo los libros "<?>"
+                        break;
+                    case 5:
+                        gestor.listarMaterialPorTipo(Revista.class);
+                        break;
+                    case 6:
+                        gestor.listarMaterialPorTipo(Articulo.class);
+                        break;
+                    case 7:
+                        gestor.listarUsuarios();
+                        break;
+                    case 8:
+                        gestor.listarHistorialPrestamos();
+                        break;
+                    case 0:
+                        break; //que solo salga
+                    default:
+                        System.out.println("Opcion invalida");
+                }
+            } catch(NumberFormatException e){
+                System.out.println("ERROR: Ingrese un numero.");
             }
         }
     }
@@ -172,6 +205,54 @@ public class Main {
         System.out.println("Matricula: ");
         String matricula = scanner.nextLine();
         gestor.registrarUsuario(new Usuario(nombre, matricula)); //del gestor
+    }
+
+    private static void registrarMaterialInteractivo(Scanner scanner, GestorBiblioteca gestor){
+        System.out.println("--- NUEVO MATERIAL ---");
+        System.out.println("1. Libro  |  2. Revista  |  3. Articulo");
+        System.out.println("Tipo: ");
+
+        int tipo =-1;
+        try{
+            tipo = Integer.parseInt(scanner.nextLine());
+        } catch(Exception e) {
+            System.out.println("ERROR");
+            return;
+        }
+
+        //aqui para los datos que van a registrar
+        System.out.println("ID unico: ");
+        String id = scanner.nextLine();
+        System.out.println("Titulo: ");
+        String titulo = scanner.nextLine();
+        System.out.println("Autor: ");
+        String autor = scanner.nextLine();
+        System.out.println("Anio: ");
+        int anio= Integer.parseInt(scanner.nextLine());
+
+        switch(tipo){
+            case 1: //libro
+                System.out.println("Numero de paginas: ");
+                int pag = Integer.parseInt(scanner.nextLine());
+                gestor.agregarMaterial(new Libro(id, titulo, autor, anio, true, pag));
+                break;
+            case 2://revista
+                System.out.println("Nombre revista: ");
+                String nomRev = scanner.nextLine();
+                System.out.println("Volumen: ");
+                int vol= Integer.parseInt(scanner.nextLine());
+                System.out.println("Edicion: ");
+                int ed= Integer.parseInt(scanner.nextLine());
+                gestor.agregarMaterial(new Revista(id, titulo, autor, anio, true, nomRev, vol, ed));
+                break;
+            case 3://articulo
+                System.out.println("Publicacion en la que se encuentra: ");
+                String pub= scanner.nextLine();
+                gestor.agregarMaterial(new Articulo(id, titulo, autor, anio, true, pub));
+                break;
+            default:
+                System.out.println("Tipo de material no valido");
+        }
     }
 }
 
