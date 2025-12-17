@@ -1,5 +1,6 @@
 package ProyectoF_Biblioteca;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,5 +136,87 @@ public class GestorBiblioteca {
         return null; //si no encuentra la matricula
     }
 
-    
+    //aqui ahora es para los prestamos************************
+    public boolean solicitarPrestamo(String idMaterial, String matriculaUsuario){
+        //buscar el material
+        MaterialBibliografico material = buscarMaterialPorId(idMaterial);
+        if(material == null){//si no encuentra el material...
+            System.out.println("ERROR: Material con ID " +idMaterial+ " no encontrado");
+            return false;
+        }
+
+        //buscar usuario
+        Usuario usuario = buscarUsuario(matriculaUsuario);
+        if(usuario == null){
+            System.out.println("ERROR: Usuario con matricula " +matriculaUsuario+ "no encontrada");
+            return false;
+        }
+
+        //verificar disponibilidad
+        if(!material.isDisponible()){ //si no esta disponible
+            System.out.println("ERROR: " +material.getTitulo()+ " no esta disponible");
+            return false;
+        }
+        
+        //procesar el prestamo
+        material.setDisponible(false); //cambio el estado del material
+
+        Prestamo nuevoPrestamo = new Prestamo(material, matriculaUsuario); //creo el Prestamo
+
+        this.prestamos.add(nuevoPrestamo); //registro el prestamo en la lista del Gestor
+
+        usuario.agregarPrestamo(nuevoPrestamo); //lo registro tambien en la lista del Usuario
+
+        //si se presta con exito...
+        System.out.println("Prestamo EXITOSO: " +material.getTitulo()+ " prestamo a " +usuario.getNombre());
+        System.out.println(nuevoPrestamo.toString());
+        return true;
+    }
+
+    //tambien necesito una funcion para buscar por ID el mateiral para lo de arriba
+    private MaterialBibliografico buscarMaterialPorId(String id){
+        for(MaterialBibliografico material : catalogo){
+            if(material.getId().equalsIgnoreCase(id)){
+                return material;
+            }
+        }
+        return null; //si no encuentra
+    }
+
+    //ahora voy con la devolución
+    //necesito que haga algo para confirmar que esta prestado el material
+    private Prestamo buscarPrestamoActivo(String idMaterial){
+        for(Prestamo p : prestamos){
+            //si el prestamo esta activo, osea que fechaDevolucion = null...
+            if(p.getMaterial().getId().equalsIgnoreCase(idMaterial) && p.getFechaDevolucion() == null){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public boolean devolverMaterial(String idMaterial){
+        //buscar el prestamo activo
+        Prestamo prestamo = buscarPrestamoActivo(idMaterial);
+        if(prestamo == null){
+            System.out.println("ERROR: No se encontro un préstamo ACTIVO para el ID de material: " +idMaterial);
+            return false;
+        }
+
+        //cachar el material
+        MaterialBibliografico material = prestamo.getMaterial();
+
+        //cambio el estado del material en la devolucion
+        material.setDisponible(true);
+
+        //ahora si registro la fecha de devolucion 
+        prestamo.setFechaDevolucion(LocalDate.now()); //que sea la misma que el prestamo
+
+        //no se si sea mejor quitarlo de la lista de usuario o dejarlo y marcarlo como devuelto
+        //como para llevar el historial de prestamos
+
+        System.out.println("Devolución exitosa del material: " +material.getTitulo());
+        System.out.println("El material ya está disponible en el catálogo.");
+        return true;
+    }
 }
