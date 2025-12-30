@@ -1,7 +1,5 @@
 package Banco;
 
-import javax.naming.LimitExceededException;
-
 public class Cuenta {
     // atributos
     public String numCuenta;
@@ -14,6 +12,8 @@ public class Cuenta {
 
     public Cuenta(String numCuenta, double saldo) {
         System.out.println("Creando la cuenta... ");
+        this.numCuenta=numCuenta;
+        this.saldo=saldo;
     }
 
     // metodos

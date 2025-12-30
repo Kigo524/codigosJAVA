@@ -10,7 +10,7 @@ public class Usuario {
     //constructores
     public Usuario(){}
 
-    public Usuario(String nombre, String aPaterno, String aMaterno){
+    public Usuario(String nombre, String aPaterno, String aMaterno, Cuenta cuenta){
         System.out.println("Creando usuario...");
         this.nombre = nombre;
         this.aPaterno = aPaterno;
@@ -33,13 +33,15 @@ public class Usuario {
     public void imprimirDatos(){
         System.out.println("*** Datos del usuaio ***");
         System.out.println("Nombre: " +this.nombre+ " " +this.aPaterno+ " " +this.aMaterno);
+        System.out.println("No. cuenta: " +cuenta.getNumCuenta());
+        cuenta.imprimirSaldo(); //para que salga "todo" lo del usuario
     }
 
     public String getNombre(){
         return this.nombre;
     }
 
-    public String getCueta(){
-        return this.numCuenta;
+    public Cuenta getCuenta(){
+        return this.cuenta;
     }
 }
