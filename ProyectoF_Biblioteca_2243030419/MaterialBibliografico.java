@@ -1,4 +1,4 @@
-package ProyectoF_Biblioteca;
+package ProyectoF_Biblioteca_2243030419;
 
 public abstract class MaterialBibliografico {
     //usare protected para que las clases hijas puedan acceder sin getter y ahorrame ese metodo

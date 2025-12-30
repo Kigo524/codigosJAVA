@@ -1,4 +1,4 @@
-package ProyectoF_Biblioteca;
+package ProyectoF_Biblioteca_2243030419;
 
 import java.util.Scanner;
 import java.util.List;
@@ -193,7 +193,18 @@ public class Main {
 
     private static void inicializarDatosPrueba(GestorBiblioteca gestor){
         gestor.agregarMaterial(new Libro("L001", "Java para Principiantes", "Juan Perez", 2023, true, 450));
+        gestor.agregarMaterial(new Revista("R003", "El futuro de la IA", "Varios", 2023, true, "National Geographic", 285, 12));
+        gestor.agregarMaterial(new Revista("R004", "Agujeros Negros", "Stephen Hawking", 2018, true, "Scientific American", 50, 5));
+        gestor.agregarMaterial(new Revista("R005", "Diseño de Interiores", "Elena Torres", 2022, true, "Vogue Home", 15, 120));
         gestor.agregarMaterial(new Revista("R001", "Tech Trends", "Varios", 2024, true, "Tech Weekly", 10, 2));
+        gestor.agregarMaterial(new Libro("L004", "Cien años de soledad", "Gabriel García Márquez", 1967, true, 496));
+        gestor.agregarMaterial(new Libro("L005", "1984", "George Orwell", 1949, true, 328));
+        gestor.agregarMaterial(new Libro("L006", "El Principito", "Antoine de Saint-Exupéry", 1943, true, 96));
+        gestor.agregarMaterial(new Libro("L007", "Drácula", "Bram Stoker", 1897, true, 418));
+        gestor.agregarMaterial(new Articulo("A003", "Efectos del Cambio Climático", "Dra. Smith", 2021, true, "Nature Journal"));
+        gestor.agregarMaterial(new Articulo("A004", "Historia de la Computación", "Alan Turing", 1950, true, "Mind Magazine"));
+        gestor.agregarMaterial(new Articulo("A005", "Neurociencia Cognitiva", "Dr. Ramos", 2020, true, "Science Daily"));
+        
         gestor.registrarUsuario(new Usuario("Estudiante 1", "1001"));
         gestor.registrarUsuario(new Usuario("Admin prueba", "ADMIN"));
     }
